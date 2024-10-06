@@ -45,5 +45,8 @@ border: 1px solid black;
 .filter-btn{
 cursor: pointer;
 }
+.filter{
+    display: flex;
+}
 
 /*# sourceMappingURL=/Index.143ac65d.css.map */

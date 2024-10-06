@@ -5,11 +5,15 @@ import { useState} from 'react';
 
 const Body=()=>{
   const [listdata,setlistdata]=useState([]);
+  const [filterdretro,setfilterdrestro]=useState([])
+  
   // console.log(listdata,'listdata');
+  const [constdata,setconstdata]=useState('');
 
 
   useEffect(()=>{
     setlistdata(reslist)
+    setfilterdrestro(reslist)
   },[]);
 
   const fetchData=async()=>{
@@ -28,20 +32,32 @@ const Body=()=>{
     return(
       <div className='body'>
           <div className='filter' >
+            <div className='search'>
+              <input type='text' value={constdata} onChange={(e)=>{setconstdata(e.target.value)}}/>
+              <button onClick={()=>{
+                const searchdata=listdata.filter((res)=>
+                res.name.toLowerCase().includes(constdata.toLowerCase())
+                )
+                setfilterdrestro(searchdata)
+
+                
+              }}>search</button>
+            </div>
             <button className='filter-btn' 
              onClick={()=>{
               let filterdata=listdata.filter((res)=>{
                 return  res.avgRating >3.8 
               })
-              
+
               setlistdata(filterdata)
               
+            
             }}> filter here </button>
             
           </div>
           <div className='res-container'>
             {
-              listdata.map((resd)=>
+              filterdretro.map((resd)=>
                  <RestorentCard key={resd.id} name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating}  />
               )
             }
