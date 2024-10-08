@@ -23,4 +23,28 @@ export const reslist = [
       avgRating: '3.8',
     },
   ];
+
+  export const items = [
+    {
+      id: '334475',
+      name: 'kfc',
+      cuisines: ['burgers', 'biriyani'],
+      deliveryTime: 36,
+      avgRating: '3.8',
+    },
+    {
+      id: '334476',
+      name: 'dominos',
+      cuisines: ['burgers', 'Pizza'],
+      deliveryTime: 36,
+      avgRating: '4.8',
+    },
+    {
+      id: '334477',
+      name: 'makkani',
+      cuisines: ['biriyani'],
+      deliveryTime: 36,
+      avgRating: '3.8',
+    },
+  ];
   

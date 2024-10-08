@@ -6,6 +6,7 @@ import About from './Components/About';
 import Error from './Components/Error';
 import Body from './Components/Body';
 import Contact from './Components/Contact';
+import ResList from './Components/ResList';
 
 import {
     createBrowserRouter,
@@ -31,6 +32,11 @@ const rerouter=createBrowserRouter([
             path:'/contact',
             element:<Contact/>
           },
+          {
+            path:'/reslist/:resid',
+            element:<ResList/>
+
+          }
 
 
 

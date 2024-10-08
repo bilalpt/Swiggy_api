@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import RestorentCard from './RestorentCard';
 import { reslist } from '../utils/constants';
 import { useState} from 'react';
+import { Link } from 'react-router-dom';
 
 const Body=()=>{
   const [listdata,setlistdata]=useState([]);
@@ -58,7 +59,7 @@ const Body=()=>{
           <div className='res-container'>
             {
               filterdretro.map((resd)=>
-                 <RestorentCard key={resd.id} name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating}  />
+                <Link key={resd.id} to={'reslist/'+resd.id} ><RestorentCard  name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating}  /></Link> 
               )
             }
 
