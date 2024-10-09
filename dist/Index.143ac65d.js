@@ -28945,7 +28945,7 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.Withpromoted = void 0;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var RestorentCard = function RestorentCard(props) {
@@ -28959,6 +28959,11 @@ var RestorentCard = function RestorentCard(props) {
     className: "res-logo",
     src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_292,h_300/TopPicks2024/91560094B.png"
   }), /*#__PURE__*/_react.default.createElement("h3", null, props.name), /*#__PURE__*/_react.default.createElement("h4", null, props.cuisines), /*#__PURE__*/_react.default.createElement("h4", null, props.avgRating), /*#__PURE__*/_react.default.createElement("h4", null, "38 minutes"));
+};
+var Withpromoted = exports.Withpromoted = function Withpromoted(RestorentCard) {
+  return function (props) {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", null, "Promoted"), /*#__PURE__*/_react.default.createElement(RestorentCard, props));
+  };
 };
 var _default = exports.default = RestorentCard;
 },{"react":"../node_modules/react/index.js"}],"utils/constants.js":[function(require,module,exports) {
@@ -28974,19 +28979,22 @@ var reslist = exports.reslist = [{
   name: 'kfc',
   cuisines: ['burgers', 'biriyani'],
   deliveryTime: 36,
-  avgRating: '3.8'
+  avgRating: '3.8',
+  Premoted: true
 }, {
   id: '334476',
   name: 'dominos',
   cuisines: ['burgers', 'Pizza'],
   deliveryTime: 36,
-  avgRating: '4.8'
+  avgRating: '4.8',
+  Premoted: false
 }, {
   id: '334477',
   name: 'makkani',
   cuisines: ['biriyani'],
   deliveryTime: 36,
-  avgRating: '3.8'
+  avgRating: '3.8',
+  Premoted: true
 }];
 var items = exports.items = [{
   id: '334475',
@@ -38776,10 +38784,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
-var _RestorentCard = _interopRequireDefault(require("./RestorentCard"));
+var _RestorentCard = _interopRequireWildcard(require("./RestorentCard"));
 var _constants = require("../utils/constants");
 var _reactRouterDom = require("react-router-dom");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -38793,6 +38800,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var Body = function Body() {
+  var Restrowithpromoted = (0, _RestorentCard.Withpromoted)(_RestorentCard.default);
   var _useState = (0, _react.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     listdata = _useState2[0],
@@ -38872,10 +38880,16 @@ var Body = function Body() {
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       key: resd.id,
       to: 'reslist/' + resd.id
-    }, /*#__PURE__*/_react.default.createElement(_RestorentCard.default, {
+    }, resd.Premoted ? /*#__PURE__*/_react.default.createElement(Restrowithpromoted, {
       name: resd.name,
       cuisines: resd.cuisines,
-      avgRating: resd.avgRating
+      avgRating: resd.avgRating,
+      Premoted: resd.Premoted
+    }) : /*#__PURE__*/_react.default.createElement(_RestorentCard.default, {
+      name: resd.name,
+      cuisines: resd.cuisines,
+      avgRating: resd.avgRating,
+      Premoted: resd.Premoted
     }));
   })));
 };
@@ -39004,12 +39018,10 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var ResList = function ResList() {
   var _useParams = (0, _reactRouterDom.useParams)(),
     resid = _useParams.resid;
-  console.log(resid, 'hey baxter');
   var _useState = (0, _react.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     reslist = _useState2[0],
     setreslist = _useState2[1];
-  console.log(reslist);
   (0, _react.useEffect)(function () {
     setreslist(_constants.items);
   }, []);
@@ -39081,7 +39093,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54869" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64842" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

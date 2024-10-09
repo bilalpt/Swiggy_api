@@ -7,6 +7,7 @@ export const reslist = [
       cuisines: ['burgers', 'biriyani'],
       deliveryTime: 36,
       avgRating: '3.8',
+      Premoted:true
     },
     {
       id: '334476',
@@ -14,6 +15,8 @@ export const reslist = [
       cuisines: ['burgers', 'Pizza'],
       deliveryTime: 36,
       avgRating: '4.8',
+      Premoted:false
+
     },
     {
       id: '334477',
@@ -21,6 +24,8 @@ export const reslist = [
       cuisines: ['biriyani'],
       deliveryTime: 36,
       avgRating: '3.8',
+      Premoted:true
+
     },
   ];
 

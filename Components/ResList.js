@@ -7,11 +7,9 @@ import { useParams } from 'react-router-dom';
 const ResList = () => {
 
     const {resid}=useParams();
-    console.log(resid,'hey baxter');
     
 
     const [reslist,setreslist]=useState([])
-    console.log(reslist);
     
 
     useEffect(()=>{

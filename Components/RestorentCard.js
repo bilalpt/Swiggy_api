@@ -8,9 +8,21 @@ const RestorentCard=(props)=>{
         <h4>{props.cuisines}</h4>
         <h4>{props.avgRating}</h4>
         <h4>38 minutes</h4>
+        
       </div>
   
     )
+  }
+
+  export const Withpromoted=(RestorentCard)=>{
+    return (props)=>{
+      return (
+        <div>
+          <label>Promoted</label>
+          <RestorentCard {...props}/>
+        </div>
+      )
+    }
   }
 
 export default RestorentCard

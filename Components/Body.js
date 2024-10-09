@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import RestorentCard from './RestorentCard';
+import RestorentCard, {Withpromoted} from './RestorentCard';
 import { reslist } from '../utils/constants';
 import { useState} from 'react';
 import { Link } from 'react-router-dom';
 
 const Body=()=>{
+  const Restrowithpromoted=Withpromoted(RestorentCard)
   const [listdata,setlistdata]=useState([]);
   const [filterdretro,setfilterdrestro]=useState([])
   
@@ -59,7 +60,10 @@ const Body=()=>{
           <div className='res-container'>
             {
               filterdretro.map((resd)=>
-                <Link key={resd.id} to={'reslist/'+resd.id} ><RestorentCard  name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating}  /></Link> 
+                <Link key={resd.id} to={'reslist/'+resd.id} >
+                  {resd.Premoted ? <Restrowithpromoted  name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating} Premoted={resd.Premoted}/>
+                   : <RestorentCard  name={resd.name} cuisines={resd.cuisines} avgRating={resd.avgRating} Premoted={resd.Premoted}  />}
+                  </Link> 
               )
             }
 
